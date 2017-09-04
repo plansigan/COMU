@@ -1,0 +1,30 @@
+<% include ./partials/header %>
+<script type="text/javascript" src="/assets/index.js"></script>
+<div class="ui left demo vertical inverted sidebar labeled icon menu">
+  <a href="/comu" class="item">
+    <i class="home icon"></i>
+    Home
+  </a>
+  <%if(!currentUser){%>
+  <a href="/login" class="item">
+    <i class="user circle outline"></i>
+    Login
+  </a>
+  <a href="/register" class="item">
+    <i class="user outline"></i>
+    Register
+  </a>
+  <%} else {%>
+    <a href="/logout" class="item">
+      <i class="tv icon"></i>
+      Logout
+    </a>
+  <%}%>
+</div>
+<a href="#"><i class="chevron circle right icon big toggleSideBar"></i></a>
+<div id="MainDiv">
+</div>
+<div id="weatherNTime" class="ui container">
+  <h1>Weather</h1>
+</div>
+<% include ./partials/footer %>

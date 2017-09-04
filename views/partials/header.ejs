@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="/semantic-ui-css/semantic.min.css">
+    <link rel="stylesheet" href="/public/css/common.css">
+    <script type="text/javascript" src="/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="/angular.min.js"></script>
+    <script type="text/javascript" src="/semantic-ui-css/semantic.min.js"></script>
+    <script type="text/javascript" src="/assets/common.js"></script>
+    <title>Comu</title>
+  </head>
+  <body>
+    <div class="ui container">
+      <% if(success && success.length > 0){ %>
+        <div class="ui success message">
+          <div class="ui header center aligned" role="alert"><%=success%></div>
+        </div>
+      <% } %>
+      <% if(error && error.length > 0){%>
+          <div class="ui negative message">
+            <div class="ui header center aligned" role="alert"><%=error%></div>
+          </div>
+      <% } %>
+  </div>

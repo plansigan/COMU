@@ -1,0 +1,17 @@
+<% include ./partials/header %>
+<script type="text/javascript" src="/assets/login.js"></script>
+<div class="ui container segment">
+  <form class="ui form" action="/login" method="POST">
+      <h1>Login</h1>
+      <div class="field">
+        <input type="text" name="username" placeholder="username"/>
+      </div>
+      <div class="field">
+        <input type="password" name="password" placeholder="password"/>
+      </div>
+      <button class="ui button" type="submit" name="button">Login</button>
+      <a href="/register">register</a>
+      <div class="ui error message"></div>
+  </form>
+</div>
+<% include ./partials/footer %>

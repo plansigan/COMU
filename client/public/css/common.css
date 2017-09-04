@@ -1,0 +1,15 @@
+/*COMMON CSS STYLES FOR ALL PAGES*/
+
+/*TOGGLE SIDE BAR STYLE*/
+.toggleSideBar{
+  color:black;
+  position:absolute;
+  top:50%;
+  animation-duration:1s
+}
+.toggleSideBar:link{
+  text-decoration:none;
+}
+
+/*ANIMATION CSS*/
+.flip { transform: rotate(-180deg);}
