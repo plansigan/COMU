@@ -24,7 +24,9 @@
 <a href="#"><i class="chevron circle right icon big toggleSideBar"></i></a>
 <div id="MainDiv">
 </div>
-<div id="weatherNTime" class="ui container">
-  <h1>Weather</h1>
+<div id="weatherNTime" class="ui raised segment" ng-controller="weatherController" data-ng-init="getWeather()">
+  <h3>Your current weather:</h2>
+  <p ng-bind="city"></p>
+  <p ng-bind="weather"></p>
 </div>
 <% include ./partials/footer %>
