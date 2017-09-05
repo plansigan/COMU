@@ -57,7 +57,7 @@ router.get('/login',(req,res)=>{
 //login logic
 router.post('/login',passport.authenticate('local',
   {
-    successRedirect:'/comu',
+    successRedirect:'/comu#!/index',
     successFlash:'Welcome to Comu!',
     failureRedirect:'/login',
     failureFlash:'You have entered an unregistered user'

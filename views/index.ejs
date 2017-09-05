@@ -1,32 +1,44 @@
 <% include ./partials/header %>
 <script type="text/javascript" src="/assets/index.js"></script>
+<%if(currentUser){%>
 <div class="ui left demo vertical inverted sidebar labeled icon menu">
-  <a href="/comu" class="item">
+  <a ui-sref="index" class="item">
     <i class="home icon"></i>
-    Home
+    Comu
   </a>
-  <%if(!currentUser){%>
-  <a href="/login" class="item">
-    <i class="user circle outline"></i>
-    Login
+  <a href="/createPost" class="item">
+    <i class="plus square outline icon"></i>
+    New Post
   </a>
-  <a href="/register" class="item">
-    <i class="user outline"></i>
-    Register
+  <a ui-sref="option" class="item">
+    <i class="tv icon"></i>
+    Option
   </a>
-  <%} else {%>
-    <a href="/logout" class="item">
-      <i class="tv icon"></i>
-      Logout
-    </a>
-  <%}%>
+  <a href="/logout" class="item">
+    <i class="tv icon"></i>
+    Logout
+  </a>
 </div>
-<a href="#"><i class="chevron circle right icon big toggleSideBar"></i></a>
+<a href=""><i class="chevron circle right icon big toggleSideBar"></i></a>
+<%}%>
 <div id="MainDiv">
+  <%if(!currentUser){%>
+  <div class="ui inverted vertical masthead center aligned segment">
+    <div class="ui text container">
+      <h1 class="ui inverted header">Comu</h1>
+      <h2>Everything is relevant</h2>
+      <a class="ui huge yellow button item" href="/register">Register</a>
+      <a class="ui huge gray button item" href="/login">Login</a>
+    </div>
+  </div>
+  <%}%>
+  <div ui-view class="ui container"></div>
 </div>
+<%if(currentUser){%>
 <div id="weatherNTime" class="ui raised segment" ng-controller="weatherController" data-ng-init="getWeather()">
   <h3>Your current weather:</h2>
   <p ng-bind="city"></p>
   <p ng-bind="weather"></p>
 </div>
+<%}%>
 <% include ./partials/footer %>

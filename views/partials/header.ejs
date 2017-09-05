@@ -5,12 +5,13 @@
     <link rel="stylesheet" href="/semantic-ui-css/semantic.min.css">
     <link rel="stylesheet" href="/public/css/common.css">
     <script type="text/javascript" src="/angular/angular.min.js"></script>
+    <script type="text/javascript" src="/angular-ui-router/release/angular-ui-router.min.js"></script>
     <script type="text/javascript" src="/jquery/dist/jquery.min.js"></script>
     <script type="text/javascript" src="/semantic-ui-css/semantic.min.js"></script>
     <script type="text/javascript" src="/assets/common.js"></script>
     <title>Comu</title>
   </head>
-  <body ng-app="index">
+  <body ng-app="index" ng-controller="mainController">
     <div class="ui container">
       <% if(success && success.length > 0){ %>
         <div class="ui success message">
