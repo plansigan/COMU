@@ -15,12 +15,26 @@ app.config(($stateProvider, $urlRouterProvider)=>{
     })
 });
 
-app.controller('mainController',function($scope){
-  $scope.name = 'mainController';
+app.controller('mainController',function($scope,$http){
+
+  $scope.allPost = ()=>{
+    // SHOW ALL POSTS
+    $http.get('/post/allPosts').then((response)=>{
+      $scope.data = response.data.Posts;
+    }).catch((err)=>{
+      console.log(err)
+    })
+  }
+
+  $scope.createPost = ()=>{
+    $('.newPost.ui.modal')
+      .modal('show')
+    ;
+  }
+
 });
 
 app.controller('indexController',function($scope){
-  $scope.name = 'indexController';
 })
 
 app.controller('optionController',function($scope){
@@ -54,4 +68,17 @@ app.controller('weatherController',($scope,$http)=>{
     $scope.geoLocation()
   },12000);
 
+});
+
+app.controller('newPost',function($scope,$http){
+  var newPost = new Object();
+  $scope.newPost = ()=>{
+    newPost.name = $scope.title;
+    newPost.description = $scope.content;
+    $http.post('/post/newPost',newPost).then((response)=>{
+      alert('post saved!')
+    }).catch((err)=>{
+      console.log(err)
+    })
+  }
 });

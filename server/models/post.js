@@ -1,8 +1,8 @@
-var mongoose = require('mongoose');
+var mongoose      = require('mongoose'),
+    autopopulate  = require('mongoose-autopopulate');
 
-var postSchema = new  mongoose.Schema({
+var postSchema = new mongoose.Schema({
   name:String,
-  description:String,
   description:String,
   created:{
     type:Date, default:Date.now
@@ -10,15 +10,10 @@ var postSchema = new  mongoose.Schema({
   author:{
     id:{
       type:mongoose.Schema.Types.ObjectId,
-      ref:'User'
-    }
-  },
-  comments:[
-    {
-      type:mongoose.Schema.Types.objectId,
-      ref:'Comment'
-    }
-  ]
+      ref:'user'
+    },
+    username:String
+  }
 });
-
+postSchema.plugin(autopopulate)
 module.exports = mongoose.model('Post',postSchema);

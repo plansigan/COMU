@@ -14,11 +14,15 @@ let port = process.env.PORT || 3000;
 //ROUTES
 var AuthRoute = require('./server/routes/index');
 
+//API ROUTES
+var postRoute = require('./server/api/Post');
+
 //MONGOOSE CONNECTION
 mongoose.Promise = global.Promise;
 mongoose.connect('mongodb://localhost/Comu')
 
 //USE DEFAULT
+app.use(bodyParser.json()); // for parsing application/json
 app.use(bodyParser.urlencoded({extended: true}));
 app.set('view engine','ejs')
 app.use(methodOverride('_method'));
@@ -50,6 +54,7 @@ app.use((req,res,next)=>{
 
 //USE ROUTES
 app.use('/',AuthRoute);
+app.use('/post',postRoute);
 
 app.listen(port,()=>{
   console.log(`connected to ${port}`)

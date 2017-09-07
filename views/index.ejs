@@ -2,11 +2,11 @@
 <script type="text/javascript" src="/assets/index.js"></script>
 <%if(currentUser){%>
 <div class="ui left demo vertical inverted sidebar labeled icon menu">
-  <a ui-sref="index" class="item">
+  <a ng-click="allPost()" ui-sref="index" class="item">
     <i class="home icon"></i>
     Comu
   </a>
-  <a href="/createPost" class="item">
+  <a ng-click="createPost()" href="" class="item">
     <i class="plus square outline icon"></i>
     New Post
   </a>
@@ -35,10 +35,28 @@
   <div ui-view class="ui container"></div>
 </div>
 <%if(currentUser){%>
+<!-- WEATHER WIDGET -->
 <div id="weatherNTime" class="ui raised segment" ng-controller="weatherController" data-ng-init="getWeather()">
   <h3>Your current weather:</h2>
   <p ng-bind="city"></p>
   <p ng-bind="weather"></p>
+</div>
+<!-- NEW POST MODAL -->
+<div class="newPost ui modal" ng-controller="newPost">
+  <h1>New Post</h1>
+  <div class="newPostInner ui container">
+    <div class="ui segment">
+      <form class="ui form">
+        <div class="fields">
+          <input ng-model="title" class="form-control" type="text" name="" value="" placeholder="Title">
+        </div>
+        <div class="fields">
+          <textarea ng-model="content" class="form-control" name="name" rows="8" cols="80" placeholder="Content"></textarea>
+        </div>
+        <button ng-click="newPost()" type="button" name="button">Post</button>
+      </form>
+    </div>
+  </div>
 </div>
 <%}%>
 <% include ./partials/footer %>

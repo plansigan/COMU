@@ -43,7 +43,7 @@ router.post('/register',(req,res)=>{
         if(err){
           return next(err);
         }
-        return res.redirect('/comu')
+        return res.redirect('/comu#!/index')
       })
     }
   });

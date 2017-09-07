@@ -33,3 +33,9 @@
 
 /*ANIMATION CSS*/
 .flip { transform: rotate(-180deg);}
+
+
+/*MODAL*/
+.newPostInner{
+  margin:.5em
+}
