@@ -26,10 +26,15 @@ app.controller('mainController',function($scope,$http){
     })
   }
 
+  //ON LOAD CONTROLLER
+  window.onload = ()=>{
+    $scope.allPost();
+  }
+
   $scope.createPost = ()=>{
     $('.newPost.ui.modal')
-      .modal('show')
-    ;
+      .modal({blurring:true})
+      .modal('show');
   }
 
 });
@@ -76,7 +81,8 @@ app.controller('newPost',function($scope,$http){
     newPost.name = $scope.title;
     newPost.description = $scope.content;
     $http.post('/post/newPost',newPost).then((response)=>{
-      alert('post saved!')
+      $scope.title = '';
+      $scope.content = '';
     }).catch((err)=>{
       console.log(err)
     })

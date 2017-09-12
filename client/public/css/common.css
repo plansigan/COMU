@@ -11,12 +11,17 @@
   min-height:300px;
 }
 
+#newPostheader{
+  padding-left:1%;
+}
+
 /*TOGGLE SIDE BAR STYLE*/
 .toggleSideBar{
   color:black;
-  position:absolute;
+  position:fixed;
   top:50%;
   animation-duration:1s
+  z-index:1000;
 }
 
 .toggleSideBar:link{
@@ -28,7 +33,7 @@
   width:300px;
   top:80%;
   left:80%;
-  position:absolute;
+  position:fixed;
 }
 
 /*ANIMATION CSS*/
@@ -38,4 +43,12 @@
 /*MODAL*/
 .newPostInner{
   margin:.5em
+}
+
+/*MEDIA RULES*/
+
+@media screen and (max-width: 1910px) {
+    #weatherNTime{
+      display:none;
+    }
 }
