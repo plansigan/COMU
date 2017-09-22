@@ -1,54 +1,67 @@
 /*COMMON CSS STYLES FOR ALL PAGES*/
 
+
 /*MAIN PAGE HEADER*/
-.masthead h1.ui.header{
-  margin-top: 1.5em;
-  margin-bottom: 0em;
-  font-size: 2em;
-  font-weight: normal;
-}
-.masthead.segment{
-  min-height:300px;
+
+.masthead h1.ui.header {
+    margin-top: 1.5em;
+    margin-bottom: 0em;
+    font-size: 2em;
+    font-weight: normal;
 }
 
-#newPostheader{
-  padding-left:1%;
+.masthead.segment {
+    min-height: 300px;
 }
+
+#newPostheader {
+    padding-left: 1%;
+}
+
 
 /*TOGGLE SIDE BAR STYLE*/
-.toggleSideBar{
-  color:black;
-  position:fixed;
-  top:50%;
-  animation-duration:1s
-  z-index:1000;
+
+.toggleSideBar {
+    color: black;
+    position: fixed;
+    top: 50%;
+    animation-duration: 1s;
+    z-index: 1000;
 }
 
-.toggleSideBar:link{
-  text-decoration:none;
+.toggleSideBar:link {
+    text-decoration: none;
 }
+
 
 /*WEATHER AND TIME STYLE*/
-#weatherNTime{
-  width:300px;
-  top:80%;
-  left:80%;
-  position:fixed;
+
+#weatherNTime {
+    width: 300px;
+    top: 80%;
+    left: 80%;
+    position: fixed;
 }
 
+
 /*ANIMATION CSS*/
-.flip { transform: rotate(-180deg);}
+
+.flip {
+    transform: rotate(-180deg);
+}
 
 
 /*MODAL*/
-.newPostInner{
-  margin:.5em
+
+.newPostInner {
+    margin: .5em
 }
+
 
 /*MEDIA RULES*/
 
 @media screen and (max-width: 1910px) {
-    #weatherNTime{
-      display:none;
+    #weatherNTime {
+        display: none;
     }
 }

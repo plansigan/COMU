@@ -1,9 +1,9 @@
-app.controller('newPost', function ($scope, $http, $rootScope) {
+app.controller('newPost', function($scope, $http, $rootScope) {
     var newPost = new Object();
 
-    //allPost FROM MAINCONTROLLER
+    //allPost FROM indexController
     $scope.allPost = () => {
-        $rootScope.$emit('mainController.allPost', {});
+        $rootScope.$emit('indexController.allPost', {});
     }
     $scope.newPost = () => {
         newPost.name = $scope.title;
