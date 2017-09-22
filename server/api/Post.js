@@ -29,6 +29,14 @@ router.post('/newPost',(req,res)=>{
       res.redirect('/comu#!/index')
     }
   });
-})
+});
+
+// VIEW POST JSON
+router.get('/')
+
+//DESTROY POST
+// router.delete('/:',(req,res)=>{
+//   Post.findByIdAndRemove()
+// })
 
 module.exports = router;
