@@ -1,11 +1,5 @@
 app.controller('indexController', function($scope, $http, $rootScope) {
 
-    //SHARING THE FUNCTION TO OTHER CONTROLLERS//
-    $rootScope.$on('indexController.allPost', () => {
-            $scope.allPost();
-        })
-        //========================================//
-
     $scope.allPost = () => {
         // SHOW ALL POSTS
         $http.get('/post/allPosts').then((response) => {
@@ -23,4 +17,10 @@ app.controller('indexController', function($scope, $http, $rootScope) {
 
     //ON LOAD CONTROLLER
     $scope.allPost();
+
+    //SHARING THE FUNCTION TO OTHER CONTROLLERS//
+    $rootScope.$on('indexController.allPost', () => {
+        $scope.allPost();
+    });
+    //========================================//
 })

@@ -1,6 +1,6 @@
 <br>
 <h1>Latest Posts:</h1>
-<div class="post ui segment raised " ng-repeat="post in data">
+<div class="post ui segment raised " ng-repeat="post in data | orderBy : '-created'">
     <a ng-click="viewPost({{post.author.id}})" href="#">
         <h2>{{post.name}}</h2>
     </a>
