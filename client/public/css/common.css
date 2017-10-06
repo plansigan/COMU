@@ -29,8 +29,12 @@
     z-index: 1000;
 }
 
-.toggleSideBar:link {
+.toggleSideBar:link,a {
     text-decoration: none;
+}
+
+a{
+    color:black;
 }
 
 
@@ -38,7 +42,7 @@
 
 #weatherNTime {
     width: 300px;
-    top: 80%;
+    top: 82.7%;
     left: 80%;
     position: fixed;
 }

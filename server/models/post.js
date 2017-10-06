@@ -13,7 +13,8 @@ var postSchema = new mongoose.Schema({
       ref:'user'
     },
     username:String
-  }
+  },
+  edited:Boolean
 });
 postSchema.plugin(autopopulate)
 module.exports = mongoose.model('Post',postSchema);

@@ -20,7 +20,7 @@
                 <i class="tv icon"></i> Logout
             </a>
         </div>
-        <a ng-click="toggleSideBar()" href=""><i class="chevron circle right icon big toggleSideBar"></i></a>
+        <a ng-click="toggleSideBar()" href=""><i ng-click="toggleSideBar()" class="chevron circle right icon big toggleSideBar"></i></a>
         <%}%>
             <div id="MainDiv">
                 <%if(!currentUser){%>
@@ -34,7 +34,7 @@
                     </div>
                     <%}%>
                         <div ui-view class="ui container"></div>
-
+                        <!-- newPost -->
                         <div class="newPost ui modal" ng-controller="newPost">
                             <div id="newPostheader" class="ui text">
                                 <h1>New Post</h1>
@@ -53,6 +53,7 @@
                                 </div>
                             </div>
                         </div>
+                        
             </div>
             <%if(currentUser){%>
                 <!-- WEATHER WIDGET -->
@@ -61,5 +62,5 @@
                         <p ng-bind="city"></p>
                         <p ng-bind="weather"></p>
                 </div>
-                <%}%>
-                    <% include ./partials/footer %>
+            <%}%>
+<% include ./partials/footer %>

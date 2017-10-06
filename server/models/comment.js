@@ -1,4 +1,5 @@
-var mongoose = require('mongoose');
+var mongoose = require('mongoose'),
+    autopopulate = require('mongoose-autopopulate');
 
 var commentSchema = mongoose.Schema({
     text: String,

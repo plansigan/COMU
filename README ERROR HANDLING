@@ -1,0 +1,7 @@
+Error handling list of error codes :
+
+441 : User not logged in
+442 : User is not the owner of the Post
+
+for common error codes please refer here: 
+https://en.wikipedia.org/wiki/List_of_HTTP_status_codes

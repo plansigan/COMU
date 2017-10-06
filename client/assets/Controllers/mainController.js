@@ -3,9 +3,8 @@ app.controller('mainController', function($scope, $http, $rootScope) {
     $scope.toggleSideBar = () => {
         $('.ui.sidebar')
             .sidebar('setting', 'transition', 'overlay')
-            .sidebar('toggle')
+            .sidebar('toggle');
     }
-
     $scope.createPost = () => {
         $('.newPost.ui.modal')
             .modal({ blurring: true })

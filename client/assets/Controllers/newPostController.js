@@ -18,12 +18,17 @@ app.controller('newPost', function($scope, $http, $rootScope) {
         newPost.name = $scope.title;
         newPost.description = $scope.content;
         $http.post('/post/newPost', newPost).then((response) => {
-            $scope.title = '';
-            $scope.content = '';
-            $scope.allPost();
-            $scope.closePost();
-            $scope.toggleSideBar();
-            $state.go('#!/option');
+            if(response.data.error == 441){
+                alert('You are not logged in');
+                window.location = '/login'
+            } else {
+                $scope.title = '';
+                $scope.content = '';
+                $scope.allPost();
+                $scope.closePost();
+                $scope.toggleSideBar();
+                $state.go('#!/option');
+            }
         }).catch((err) => {
             console.log(err)
         })
