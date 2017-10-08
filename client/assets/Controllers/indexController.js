@@ -1,24 +1,14 @@
-app.controller('indexController', function ($scope, $http, $rootScope) {
+app.controller('indexController', ['$scope', '$http', '$rootScope', 'globalFunctions', function($scope, $http, $rootScope, globalFunctions) {
 
-    $scope.allPost = () => {
-        // SHOW ALL POSTS
-        $http.get('/post/allPosts').then((response) => {
-            $scope.data = response.data.Posts;
-        }).catch((err) => {
-            console.log(err)
-        })
-    }
-    
     $scope.viewPost = (id) => {
         $http.get('/post/viewPost/' + id).then((response) => {
             $scope.postData = response.data.Post;
             // check ownership condition
-            if (response.data.currentUser._id == response.data.Post.author.id){
+            if (response.data.currentUser._id == response.data.Post.author.id) {
                 $scope.managePost = true;
             } else {
                 $scope.managePost = false;
             }
-
             $('.viewPost.ui.modal')
                 .modal({ blurring: true })
                 .modal('show');
@@ -27,25 +17,30 @@ app.controller('indexController', function ($scope, $http, $rootScope) {
         })
     };
 
-    $scope.deletePost = (id)=>{
-        $http.delete('/post/'+ id).then((response)=>{
-            $scope.allPost();
-            alert(response.data.Post);
+    $scope.deletePost = (id) => {
+        $http.delete('/post/' + id).then((response) => {
+            var data = response.data;
+            if (data.error == 441) {
+                globalFunctions.errorResponse(data)
+            }
             $('.viewPost.ui.modal')
-                .modal({blurring: true})
-                .modal('hide',()=>{
+                .modal({ blurring: true })
+                .modal('hide', () => {
                     $scope.postData = ''
                 })
-        }).catch((err)=>{
+            globalFunctions.allPost($scope, $http);
+            alert(data.Post);
+        }).catch((err) => {
             console.log(err);
         })
     }
 
     $scope.editPost = (id) => {
         $http.get('/post/viewPost/' + id).then((response) => {
+            var data = response.data;
             $scope.edit = {
-                Title:response.data.Post.name,
-                Content: response.data.Post.description
+                Title: data.Post.name,
+                Content: data.Post.description
             }
             $('.editPost.ui.modal')
                 .modal({ blurring: true })
@@ -56,15 +51,14 @@ app.controller('indexController', function ($scope, $http, $rootScope) {
     };
 
     $scope.updatePost = (id) => {
-        $http.post('/post/updatePost/'+id,$scope.edit).then((response) => {
-            if (response.data.error == 441) {
-                alert('You are not logged in');
-                window.location = '/login'
+        $http.post('/post/updatePost/' + id, $scope.edit).then((response) => {
+            var data = response.data;
+            if (data.error == 441) {
+                globalFunctions.errorResponse(data)
             } else {
                 $scope.title = '';
                 $scope.content = '';
-                $scope.allPost();
-                $scope.closePost();
+                globalFunctions.allPost($scope, $http);
                 $scope.toggleSideBar();
                 $state.go('#!/option');
             }
@@ -74,11 +68,13 @@ app.controller('indexController', function ($scope, $http, $rootScope) {
     }
 
     //ON LOAD CONTROLLER
-    $scope.allPost();
-
-    //SHARING THE FUNCTION TO OTHER CONTROLLERS//
+    globalFunctions.allPost($scope, $http);
+    
+    //passing allpost For Index to other modules
+    $scope.allPost = ()=>{
+        globalFunctions.allPost($scope, $http);
+    }
     $rootScope.$on('indexController.allPost', () => {
         $scope.allPost();
     });
-    //========================================//
-})
+}])

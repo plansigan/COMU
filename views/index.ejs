@@ -1,5 +1,6 @@
 <% include ./partials/header %>
     <script type="text/javascript" src="/assets/index.js"></script>
+    <script type="text/javascript" src="/assets/Factory/globalFunctions.js"></script>
     <script type="text/javascript" src="/assets/Controllers/mainController.js"></script>
     <script type="text/javascript" src="/assets/Controllers/Widget/weatherController.js"></script>
     <script type="text/javascript" src="/assets/Controllers/indexController.js"></script>
@@ -53,7 +54,7 @@
                                 </div>
                             </div>
                         </div>
-                        
+
             </div>
             <%if(currentUser){%>
                 <!-- WEATHER WIDGET -->
@@ -62,5 +63,5 @@
                         <p ng-bind="city"></p>
                         <p ng-bind="weather"></p>
                 </div>
-            <%}%>
-<% include ./partials/footer %>
+                <%}%>
+                    <% include ./partials/footer %>

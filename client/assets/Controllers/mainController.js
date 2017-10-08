@@ -1,9 +1,7 @@
-app.controller('mainController', function($scope, $http, $rootScope) {
+app.controller('mainController', function ($scope, $http, $rootScope, globalFunctions) {
 
     $scope.toggleSideBar = () => {
-        $('.ui.sidebar')
-            .sidebar('setting', 'transition', 'overlay')
-            .sidebar('toggle');
+        globalFunctions.toggleSideBar();
     }
     $scope.createPost = () => {
         $('.newPost.ui.modal')
@@ -12,22 +10,12 @@ app.controller('mainController', function($scope, $http, $rootScope) {
     };
 
     $scope.closePost = () => {
-        $('.newPost.ui.modal')
-            .modal('hide');
+        globalFunctions.closePost();
     }
 
     //indexController allPost
     $scope.allPost = () => {
-        $rootScope.$emit('indexController.allPost', {});
+        globalFunctions.allPost();
     }
 
-
-    //SHARING THE FUNCTION TO OTHER CONTROLLERS//
-    $rootScope.$on('mainController.closePost', () => {
-        $scope.closePost();
-    });
-    $rootScope.$on('mainController.toggleSideBar', () => {
-        $scope.toggleSideBar();
-    });
-    //========================================//
 });
