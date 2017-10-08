@@ -1,5 +1,5 @@
 var express = require('express'),
-    router = express.Router({mergeParams: true}),
+    router = express.Router({ mergeParams: true }),
     Post = require('./../models/post.js'),
     middleware = require('../middleware');
 
@@ -17,13 +17,13 @@ router.get('/allPosts', (req, res) => {
 })
 
 // NEW POST JSON
-router.post('/newPost',middleware.isLoggedIn,(req, res) => {
+router.post('/newPost', middleware.isLoggedIn, (req, res) => {
     var newPost = req.body
     newPost.author = {
-        username: req.user.username,
-        id: req.user._id
-    }
-    //start post with not edited
+            username: req.user.username,
+            id: req.user._id
+        }
+        //start post with not edited
     newPost.edited = false;
 
     Post.create(newPost, (err, newlyCreatedPost) => {
@@ -37,38 +37,36 @@ router.post('/newPost',middleware.isLoggedIn,(req, res) => {
 });
 
 // VIEW POST JSON
-router.get('/viewPost/:id',(req, res) => {
+router.get('/viewPost/:id', (req, res) => {
     Post.findById(req.params.id, (err, Post) => {
         console.log(Post);
-        res.json({Post,currentUser:req.user})
+        res.json({ Post, currentUser: req.user })
     });
 });
 
 //UPDATE POST
-router.post('/updatePost/:id',(req,res)=>{
+router.post('/updatePost/:id', middleware.checkPostOwnersip, (req, res) => {
     var editedPost = req.body
-    Post.findById(req.params.id,(err,updatedPost)=>{
-        if(err){
+    Post.findByIdAndUpdate(req.params.id, editedPost, (err, updatedPost) => {
+        if (err) {
             console.log(err)
         }
-        
-
         console.log(editedPost)
-    })
-})
+    });
+});
 
 //DESTROY POST
-router.delete('/:id', middleware.checkPostOwnersip,(req,res)=>{
+router.delete('/:id', middleware.checkPostOwnersip, (req, res) => {
     var Postname;
-    Post.findById(req.params.id, (err, Post)=>{
-        if(err){
+    Post.findById(req.params.id, (err, Post) => {
+        if (err) {
             console.log(err)
         } else {
             Postname = Post.name;
         }
     })
-    Post.findByIdAndRemove(req.params.id,(err)=>{
-        if(err){
+    Post.findByIdAndRemove(req.params.id, (err) => {
+        if (err) {
             res.redirect('back');
         } else {
             res.json({
