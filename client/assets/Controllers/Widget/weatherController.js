@@ -5,7 +5,7 @@ app.controller('weatherController', function($scope, $http){
     // GEOLOCATION OF USER
     $scope.geoLocation = () => {
         if ("geolocation" in navigator) {
-            navigator.geolocation.getCurrentPosition($scope.getWeather);
+            navigator.geoloc ation.getCurrentPosition($scope.getWeather);
         } else {
             $scope.weather = "Geolocation is not supported by this browser.";
         }
@@ -26,5 +26,4 @@ app.controller('weatherController', function($scope, $http){
     setInterval(() => {
         $scope.geoLocation()
     }, 12000);
-
 });

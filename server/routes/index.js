@@ -25,6 +25,7 @@ router.post('/register',(req,res)=>{
 
   var newAcc  = new User({
                   username:req.body.account.username,
+                  ethaddress: req.body.account.ethaddress,
                   email:req.body.account.email,
                   age:req.body.account.age,
                   gender:req.body.account.gender,

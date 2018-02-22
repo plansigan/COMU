@@ -2,10 +2,12 @@
     <script type="text/javascript" src="/assets/index.js"></script>
     <script type="text/javascript" src="/assets/Factory/globalFunctions.js"></script>
     <script type="text/javascript" src="/assets/Controllers/mainController.js"></script>
-    <script type="text/javascript" src="/assets/Controllers/Widget/weatherController.js"></script>
+    <!-- <script type="text/javascript" src="/assets/Controllers/Widget/weatherController.js"></script> -->
     <script type="text/javascript" src="/assets/Controllers/indexController.js"></script>
     <script type="text/javascript" src="/assets/Controllers/newPostController.js"></script>
     <script type="text/javascript" src="/assets/Controllers/optionController.js"></script>
+    <script type="text/javascript" src="/assets/Controllers/etheriumController.js"></script>
+    <script type="text/javascript" src="/assets/js/web3.min.js"></script>
     <%if(currentUser){%>
         <div class="ui left demo vertical inverted sidebar labeled icon menu">
             <a ng-click="allPost()" ui-sref="index" class="item">
@@ -16,6 +18,9 @@
             </a>
             <a ui-sref="option" class="item">
                 <i class="tv icon"></i> Option
+            </a>
+            <a ui-sref="Etherium" class="item">
+                <i class="superscript icon"></i> Earn Etherium
             </a>
             <a href="/logout" class="item">
                 <i class="tv icon"></i> Logout
@@ -56,12 +61,12 @@
                         </div>
 
             </div>
-            <%if(currentUser){%>
+            <!-- <%if(currentUser){%> -->
                 <!-- WEATHER WIDGET -->
-                <div id="weatherNTime" class="ui raised segment" ng-controller="weatherController" data-ng-init="getWeather()">
+                <!-- <div id="weatherNTime" class="ui raised segment" ng-controller="weatherController" data-ng-init="getWeather()">
                     <h3>Your current weather:</h2>
                         <p ng-bind="city"></p>
                         <p ng-bind="weather"></p>
-                </div>
-                <%}%>
-                    <% include ./partials/footer %>
+                </div> -->
+                <!-- <%}%> -->
+<% include ./partials/footer %>

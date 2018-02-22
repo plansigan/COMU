@@ -12,6 +12,11 @@ app.config(($stateProvider, $urlRouterProvider)=>{
       templateUrl:'./../pages/option.html',
       controller:'optionController'
     })
+    .state('Etherium', {
+      url: '/Etherium',
+      templateUrl: './../pages/EtheriumPage.html',
+      controller: 'etheriumController'
+    })
 });
 
 
