@@ -2,6 +2,7 @@
 
 app.factory('globalFunctions', function() {
     return {
+<<<<<<< HEAD
         allPost: ($scope, $http) => {
             // SHOW ALL POSTS
             $http.get('/post/allPosts').then((response) => {
@@ -25,6 +26,12 @@ app.factory('globalFunctions', function() {
             $('.ui.sidebar')
                 .sidebar('setting', 'transition', 'overlay')
                 .sidebar('toggle');
+=======
+        errorResponse: (data) => {
+            data.runFunc = eval(data.runFunc);
+            alert(data.message);
+            data.runFunc();
+>>>>>>> 58f6cb33e31ed20813b60bdd7e5e0d35ce53084e
         }
     }
 })
